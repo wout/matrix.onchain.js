@@ -2,39 +2,42 @@ const Matrix = {
   /**
     * Performs an addition operation on two matrices.
     * @param {number[][]} a - First matrix.
-    * @param {number[][]} b  - Second matrix.
+    * @param {number|number[][]} b  - Second matrix or fill value.
     * @return {number[][]} A new matrix.
     */
   add: (a, b) => Matrix.op(a, b, (x, y) => x + y),
   /**
     * Performs a substraction operation on two matrices.
     * @param {number[][]} a - First matrix.
-    * @param {number[][]} b - Second matrix.
+    * @param {numberm|number[][]} b - Second matrix or fill value.
     * @return {number[][]} A new matrix.
     */
   sub: (a, b) => Matrix.op(a, b, (x, y) => x - y),
   /**
     * Performs a multiplication operation on two matrices.
     * @param {number[][]} a - First matrix.
-    * @param {number[][]} b - Second matrix.
+    * @param {number|number[][]} b - Second matrix or fill value.
     * @return {number[][]} A new matrix.
     */
   mpy: (a, b) => Matrix.op(a, b, (x, y) => x * y),
   /**
     * Performs a division operation on two matrices.
     * @param {number[][]} a - First matrix.
-    * @param {number[][]} b - Second matrix.
+    * @param {number|number[][]} b - Second matrix or fill value.
     * @return {number[][]} A new matrix.
     */
   div: (a, b) => Matrix.op(a, b, (x, y) => x / y),
   /**
     * Performs an operation on two matrices using the given callback function.
     * @param {number[][]} a - First matrix.
-    * @param {number[][]} b - Second matrix.
+    * @param {number|number[][]} b - Second matrix or fill value.
     * @param {function} c - Callback function to operate on both matrices.
     * @return {number[][]} A new matrix.
     */
-  op: (a, b, c) => a.map((x, i) => x.map((y, j) => c(y, b[i][j]))),
+  op: (a, b, c) => {
+    if (typeof b == 'number') b = Matrix.fill(a.length, a[0].length, b)
+    return a.map((x, i) => x.map((y, j) => c(y, b[i][j])))
+  },
   /**
     * Creates and fills a new matrix.
     * @param {number} r - Number of rows.
