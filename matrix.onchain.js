@@ -37,10 +37,10 @@ const Matrix = {
   op: (a, b, c) => a.map((x, i) => x.map((y, j) => c(y, b[i][j]))),
   /**
     * Creates and fills a new matrix.
-    * @param {number[][]} a - Number of rows.
-    * @param {number[][]} b - Number of columns.
-    * @param {number|null} x - The fill value.
+    * @param {number} r - Number of rows.
+    * @param {number} c - Number of columns.
+    * @param {number|null} v - The fill value.
     * @return {number[][]} A new matrix.
     */
-  fill: (a, b, x) => [...new Array(a)].map(_ => [...new Array(b)].map(_ => x || 0))
+  fill: (r, c, v) => [...new Array(r)].map(_ => [...new Array(c)].map(_ => v || 0))
 };
