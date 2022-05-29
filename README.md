@@ -1,12 +1,91 @@
 # matrix.onchain.js
-A micro JS library (>0.3KB) for matrix operations..
+A micro JS library (349 bytes) for matrix operations.
 
 This library is intended for use in environments where the available storage
 space is very limited; like blockchains for example. Everything is stripped down
 to the bare essentials. 
 
 ## Usage
-TODO
+
+### Operating on matrices
+Perform add, subtract, multiply and divide opterations on two given matrices.
+For example:
+
+```js
+let a = [
+  [1, 2, 3],
+  [0, 1, 0]
+]
+let b = [
+  [0, 0, 1],
+  [1, 1, 1]
+]
+Matrix.add(a, b)
+// => [
+//   [1, 2, 4],
+//   [1, 2, 1]
+// ]
+```
+
+You also can pass a `number` value as the second argument to perform uniform
+operations:
+
+```js
+let a = [
+  [1, 2, 3],
+  [0, 1, 0]
+]
+Matrix.mpy(a, 2)
+// => [
+//   [2, 4, 6],
+//   [0, 2, 0]
+// ]
+```
+
+The following methods are available:
+- `Matrix.add(a, b)`
+- `Matrix.sub(a, b)`
+- `Matrix.mpy(a, b)`
+- `Matrix.div(a, b)`
+
+### Custom matrix operations
+Perform any other operation an two matrices with equal dimensions.
+
+For example, If you'd want to to a modulo operation:
+
+```js
+Matrix.op(a, b, (x, y) => x % y)
+```
+
+Of course, this also works with uniform operations:
+
+```js
+Matrix.op(a, 2, (x, y) => x % y)
+```
+
+### Creating new matrices
+With the `fill` method, a new matrix can be created with a given number of rows
+and columns:
+
+```js
+Matrix.fill(4, 3)
+// => [
+//   [0, 0, 0, 0],
+//   [0, 0, 0, 0],
+//   [0, 0, 0, 0]
+// ]
+```
+
+Optionally, an initial value can be passed as the third argument:
+
+```js
+Matrix.fill(4, 3, 2)
+// => [
+//   [2, 2, 2, 2],
+//   [2, 2, 2, 2],
+//   [2, 2, 2, 2]
+// ]
+```
 
 ## License
 matrix.onchain.js is licensed under the terms of the MIT License.
