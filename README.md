@@ -49,7 +49,7 @@ The following methods are available:
 - `Matrix.div(a, b)`
 
 ### Custom matrix operations
-Perform any other operation an two matrices with equal dimensions.
+Perform any other operation on two matrices with equal dimensions.
 
 For example, If you'd want to to a modulo operation:
 
