@@ -1,5 +1,5 @@
 # matrix.onchain.js
-A micro JS library (349 bytes) for matrix operations.
+A micro JS library (363 bytes) for matrix operations.
 
 This library is intended for use in environments where the available storage
 space is very limited; like blockchains for example. Everything is stripped down
@@ -20,7 +20,7 @@ let b = [
   [0, 0, 1],
   [1, 1, 1]
 ]
-Matrix.add(a, b)
+Mtx.add(a, b)
 // => [
 //   [1, 2, 4],
 //   [1, 2, 1]
@@ -35,7 +35,7 @@ let a = [
   [1, 2, 3],
   [0, 1, 0]
 ]
-Matrix.mpy(a, 2)
+Mtx.mpy(a, 2)
 // => [
 //   [2, 4, 6],
 //   [0, 2, 0]
@@ -43,10 +43,10 @@ Matrix.mpy(a, 2)
 ```
 
 The following methods are available:
-- `Matrix.add(a, b)`
-- `Matrix.sub(a, b)`
-- `Matrix.mpy(a, b)`
-- `Matrix.div(a, b)`
+- `Mtx.add(a, b)`
+- `Mtx.sub(a, b)`
+- `Mtx.mpy(a, b)`
+- `Mtx.div(a, b)`
 
 ### Custom matrix operations
 Perform any other operation on two matrices with equal dimensions.
@@ -54,13 +54,13 @@ Perform any other operation on two matrices with equal dimensions.
 For example, If you'd want to to a modulo operation:
 
 ```js
-Matrix.op(a, b, (x, y) => x % y)
+Mtx.op(a, b, (x, y) => x % y)
 ```
 
 Of course, this also works with uniform operations:
 
 ```js
-Matrix.op(a, 2, (x, y) => x % y)
+Mtx.op(a, 2, (x, y) => x % y)
 ```
 
 ### Creating new matrices
@@ -68,7 +68,7 @@ With the `fill` method, a new matrix can be created with a given number of rows
 and columns:
 
 ```js
-Matrix.fill(4, 3)
+Mtx.fill(4, 3)
 // => [
 //   [0, 0, 0, 0],
 //   [0, 0, 0, 0],
@@ -79,7 +79,7 @@ Matrix.fill(4, 3)
 Optionally, an initial value can be passed as the third argument:
 
 ```js
-Matrix.fill(4, 3, 2)
+Mtx.fill(4, 3, 2)
 // => [
 //   [2, 2, 2, 2],
 //   [2, 2, 2, 2],
