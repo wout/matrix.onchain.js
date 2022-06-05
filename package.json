@@ -5,5 +5,12 @@
   "main": "matrix.onchain.js",
   "repository": "git@github.com:onchainjs/matrix.onchain.js.git",
   "author": "Wout <hi@wout.codes>",
-  "license": "MIT"
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "jasmine": "^4.1.0"
+  },
+  "scripts": {
+    "test": "jasmine"
+  }
 }
