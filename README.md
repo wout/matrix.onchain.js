@@ -3,7 +3,11 @@ A micro JS library (363 bytes) for matrix operations.
 
 This library is intended for use in environments where the available storage
 space is very limited; like blockchains for example. Everything is stripped down
-to the bare essentials. 
+to the bare essentials.
+
+![GitHub](https://img.shields.io/github/license/onchainjs/matrix.onchain.js)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/onchainjs/matrix.onchain.js)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/onchainjs/matrix.onchain.js/matrix.onchain.js%20CI)
 
 ## Usage
 
