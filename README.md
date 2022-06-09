@@ -32,15 +32,15 @@ Mtx.op(a, b, (x, y) => x + y)
 //    ]
 ```
 
-Passing a numberic value as the second argument will first create uniform a
-matrix of equal dimensions, before performing the operation:
+Passing a numeric value as the second argument will first create a uniform
+matrix of equal dimensions as the first, before performing the operation:
 
 ```js
 Mtx.op(a, 2, (x, y) => x + y)
 ```
 
 ### Common operations
-Often you'll need to repeat the same matrix oferation multiple times. That's
+Often you'll need to repeat the same matrix operation multiple times. That's
 where common operations come in.
 
 First, register your favourite operation:
