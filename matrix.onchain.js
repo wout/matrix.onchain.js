@@ -5,39 +5,9 @@
 
 export const Mtx = {
   /**
-    * Performs an addition operation on two matrices.
-    *
-    * @param {MatrixArray} a - First matrix.
-    * @param {MatrixArray|number} b  - Second matrix or fill value.
-    * @return {MatrixArray} A new matrix.
+    * Storage object for common operations.
     */
-  add(a, b) { return Mtx.op(a, b, (x, y) => x + y) },
-
-  /**
-    * Performs a substraction operation on two matrices.
-    *
-    * @param {MatrixArray} a - First matrix.
-    * @param {number|MatrixArray} b - Second matrix or fill value.
-    * @return {MatrixArray} A new matrix.
-    */
-  sub(a, b) { return Mtx.op(a, b, (x, y) => x - y) },
-
-  /**
-    * Performs a multiplication operation on two matrices.
-    * @param {MatrixArray} a - First matrix.
-    * @param {MatrixArray|number} b - Second matrix or fill value.
-    * @return {MatrixArray} A new matrix.
-    */
-  mpy(a, b) { return Mtx.op(a, b, (x, y) => x * y) },
-
-  /**
-    * Performs a division operation on two matrices.
-    *
-    * @param {MatrixArray} a - First matrix.
-    * @param {MatrixArray|number} b - Second matrix or fill value.
-    * @return {MatrixArray} A new matrix.
-    */
-  div(a, b) { return Mtx.op(a, b, (x, y) => x / y) },
+  co: {},
 
   /**
     * Performs an operation on two matrices using the given callback function.

@@ -1,5 +1,5 @@
 # matrix.onchain.js
-A micro JS library (313 bytes) for matrix operations.
+A micro JS library (240 bytes) for matrix operations.
 
 This library is intended for use in environments where the available storage
 space is very limited; like blockchains for example. Everything is stripped down
@@ -12,8 +12,8 @@ to the bare essentials.
 ## Usage
 
 ### Operating on matrices
-Perform add, subtract, multiply and divide opterations on two given matrices.
-For example:
+Perform operations on two matrices with equal dimensions. For example, If you'd
+want to do a add operation:
 
 ```js
 let a = [
@@ -21,50 +21,38 @@ let a = [
   [0, 1, 0]
 ]
 let b = [
-  [0, 0, 1],
-  [1, 1, 1]
+  [3, 2, 1],
+  [1, 0, 1]
 ]
-Mtx.add(a, b)
+
+Mtx.op(a, b, (x, y) => x + y)
 // => [
-//   [1, 2, 4],
-//   [1, 2, 1]
-// ]
+//      [4, 4, 4],
+//      [1, 1, 1]
+//    ]
 ```
 
-You also can pass a `number` value as the second argument to perform uniform
-operations:
+Passing a numberic value as the second argument will first create uniform a
+matrix of equal dimensions, before performing the operation:
 
 ```js
-let a = [
-  [1, 2, 3],
-  [0, 1, 0]
-]
-Mtx.mpy(a, 2)
-// => [
-//   [2, 4, 6],
-//   [0, 2, 0]
-// ]
+Mtx.op(a, 2, (x, y) => x + y)
 ```
 
-The following methods are available:
-- `Mtx.add(a, b)`
-- `Mtx.sub(a, b)`
-- `Mtx.mpy(a, b)`
-- `Mtx.div(a, b)`
+### Common operations
+Often you'll need to repeat the same matrix oferation multiple times. That's
+where common operations come in.
 
-### Custom matrix operations
-Perform any other operation on two matrices with equal dimensions.
-
-For example, If you'd want to to a modulo operation:
+First, register your favourite operation:
 
 ```js
-Mtx.op(a, b, (x, y) => x % y)
+Mtx.co['+'] = (x, y) => x + y
 ```
 
-Of course, this also works with uniform operations:
+Then use and re-use that operation wherever needed:
 
 ```js
-Mtx.op(a, 2, (x, y) => x % y)
+Mtx.op(a, b, Mtx.co['+'])
 ```
 
 ### Creating new matrices
@@ -72,7 +60,7 @@ With the `fill` method, a new matrix can be created with a given number of rows
 and columns:
 
 ```js
-Mtx.fill(4, 3)
+Mtx.fill(3, 4)
 // => [
 //   [0, 0, 0, 0],
 //   [0, 0, 0, 0],
@@ -83,11 +71,23 @@ Mtx.fill(4, 3)
 Optionally, an initial value can be passed as the third argument:
 
 ```js
-Mtx.fill(4, 3, 2)
+Mtx.fill(3, 4, 2)
 // => [
 //   [2, 2, 2, 2],
 //   [2, 2, 2, 2],
 //   [2, 2, 2, 2]
+// ]
+```
+
+Alternatively, a full row with columns can be passed instead of the number of 
+columns, to create a matrix with uniform columns:
+
+```js
+Mtx.fill(3, [0, 1, 0])
+// => [
+//   [0, 1, 0],
+//   [0, 1, 0],
+//   [0, 1, 0]
 // ]
 ```
 
