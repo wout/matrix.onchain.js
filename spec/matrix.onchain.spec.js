@@ -30,8 +30,8 @@ describe('Mtx', () => {
 
     it('adds multiplies a matrix with a uniform matrix', () => {
       expect(Mtx.op(a, 3, Mtx.co['*'])).toEqual([
-        [4, 5, 6],
-        [3, 4, 3]
+        [3, 6, 9],
+        [0, 3, 0]
       ])
     })
   })
