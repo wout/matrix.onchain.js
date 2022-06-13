@@ -1,5 +1,5 @@
 # matrix.onchain.js
-A micro JS library (240 bytes) for matrix operations.
+A micro JS library (254 bytes) for matrix operations.
 
 This library is intended for use in environments where the available storage
 space is very limited; like blockchains for example. Everything is stripped down
@@ -32,11 +32,28 @@ Mtx.op(a, b, (x, y) => x + y)
 //    ]
 ```
 
-Passing a numeric value as the second argument will first create a uniform
-matrix of equal dimensions as the first, before performing the operation:
+Passing a numeric value as the second argument will create a uniform matrix of
+equal dimensions as the one passed as the first argument, before performing the
+operation:
 
 ```js
 Mtx.op(a, 2, (x, y) => x + y)
+// => [
+//   [3, 4, 5],
+//   [2, 3, 2]
+// ]
+```
+
+Alternatively, a single matrix row can be passed as the second argument, which
+will be used to build a veritcally uniform matrix before performing the
+operation:
+
+```js
+Mtx.op(a, [1, 11, 1], (x, y) => x + y)
+// => [
+//   [2, 13, 4],
+//   [1, 12, 1]
+// ]
 ```
 
 ### Common operations

@@ -13,12 +13,12 @@ export const Mtx = {
     * Performs an operation on two matrices using the given callback function.
     *
     * @param {MatrixArray} a - First matrix.
-    * @param {MatrixArray|number} b - Second matrix or fill value.
+    * @param {MatrixArray|MatrixRowArray|number} b - Second matrix or fill value.
     * @param {function} c - Callback function to operate on both matrices.
     * @return {MatrixArray} A new matrix.
     */
   op(a, b, c) {
-    if (typeof b == 'number') b = Mtx.fill(a.length, a[0].length, b)
+    if (typeof (b[0] || b) == 'number') b = Mtx.fill(a.length, (b[0] ? b : a[0].length), b)
     return a.map((x, i) => x.map((y, j) => c(y, b[i][j])))
   },
 
@@ -37,8 +37,8 @@ export const Mtx = {
   /**
    * Creates a row of the given numeric value, or returns the given column.
    * 
-   * @param {number} c - Number of columns or an array with columns.
-   * @param {MatrixRowArray|number} v - 
+   * @param {MatrixRowArray|number} c - Number of columns or an array with columns.
+   * @param {number} v - Fill value.
    * @returns {MatrixRowArray} The given row or a new row filled with the given value.
    */
   row(c, v) {

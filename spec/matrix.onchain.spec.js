@@ -34,6 +34,13 @@ describe('Mtx', () => {
         [0, 3, 0]
       ])
     })
+
+    it('accepts a row as fill value for a vertically uniform matrix', () => {
+      expect(Mtx.op(a, [1, 2, 3], Mtx.co['+'])).toEqual([
+        [2, 4, 6],
+        [1, 3, 3]
+      ])
+    })
   })
 
   describe('.fill', () => {
